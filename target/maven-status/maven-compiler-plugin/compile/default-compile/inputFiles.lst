@@ -1,6 +1,10 @@
+/Users/ivan.liu/play/online-order/src/main/java/com/example/accessingdatamysql/entity/Order1.java
 /Users/ivan.liu/play/online-order/src/main/java/com/example/accessingdatamysql/MainController.java
+/Users/ivan.liu/play/online-order/src/main/java/com/example/accessingdatamysql/repository/Order2Repository.java
 /Users/ivan.liu/play/online-order/src/main/java/com/example/accessingdatamysql/entity/Goods.java
 /Users/ivan.liu/play/online-order/src/main/java/com/example/accessingdatamysql/repository/GoodsRepository.java
 /Users/ivan.liu/play/online-order/src/main/java/com/example/accessingdatamysql/repository/UserRepository.java
+/Users/ivan.liu/play/online-order/src/main/java/com/example/accessingdatamysql/entity/Order2.java
 /Users/ivan.liu/play/online-order/src/main/java/com/example/accessingdatamysql/AccessingDataMysqlApplication.java
 /Users/ivan.liu/play/online-order/src/main/java/com/example/accessingdatamysql/entity/User.java
+/Users/ivan.liu/play/online-order/src/main/java/com/example/accessingdatamysql/repository/Order1Repository.java

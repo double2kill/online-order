@@ -19,6 +19,8 @@ public class Goods {
 
 	private String img;
 
+	private Integer hot = 0;
+
 	public Integer getId() {
 		return id;
 	}
@@ -57,5 +59,20 @@ public class Goods {
 
 	public void setPrice(Integer Price) {
 		this.price = price;
+	}
+
+	public Integer getHot() {
+		return hot;
+	}
+
+	public void setHot(Integer hot) {
+		this.hot = hot;
+	}
+
+	public void addHot() {
+		if(this.hot == null) {
+			this.hot = 1;
+		}
+		this.hot = this.hot + 1;
 	}
 }

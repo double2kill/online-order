@@ -1,9 +1,14 @@
 package com.example.accessingdatamysql;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.example.accessingdatamysql.Goods;
+import java.util.List;
 
-public interface GoodsRepository extends CrudRepository<Goods, Integer> {
 
+@Repository
+public interface GoodsRepository extends JpaRepository<Goods, Integer> {
+  Goods findByName(String name);
+  List<Goods> findByOrderByHotDesc();
 }

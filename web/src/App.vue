@@ -1,51 +1,30 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
-import { ref, onMounted } from 'vue'
-import Footer from './components/Footer.vue'
+// import Footer from './components/Footer.vue'
 import Top from './components/Top.vue'
-import axios from 'axios'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
-const goods = ref([])
+import { onMounted } from 'vue'
 
-onMounted(async () => {
-  const { data } = await axios.get('/order/goods')
-  goods.value = data
+onMounted(() => {
+  const loginUser = localStorage.getItem('loginUser')
+  const { name } = router.currentRoute.value
+  if (['login', 'register'].includes(name)) {
+    return
+  }
+  if (!loginUser) {
+    router.push('/login')
+  }
 })
 </script>
 
 <template>
-  <!-- <Top /> -->
-  <div class="hero-area slider-navigation-1">
-    <div
-      v-for="(n, index) in goods"
-      :key="index"
-      class="single-hero-item bg-grey d-flex align-items-center"
-    >
-      <div class="container">
-        <div class="hero-item-inner">
-          <div class="row align-items-center justify-content-center">
-            <div class="col-xl-6 col-lg-7 col-md-7 col-12 order-2 order-md-1">
-              <div class="hero-content">
-                <h1><span></span>{{ n.name }}</h1>
-                <h1><span></span>${{ n.price }}</h1>
-
-                <a :href="`showNews.do?id=${n.id}`" class="sf-button">
-                  <span>下单</span>
-                </a>
-              </div>
-            </div>
-            <div class="col-xl-6 col-lg-5 col-md-5 col-sm-6 order-1 order-md-2 align-self-end">
-              <div class="hero-image">
-                <img :src="`/upload/${n.img}`" alt="hero image" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <Top />
+  <main style="padding: 20px">
+    <RouterView />
+  </main>
   <!-- <Footer /> -->
 </template>
 
