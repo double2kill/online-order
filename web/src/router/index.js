@@ -48,6 +48,18 @@ const router = createRouter({
       path: '/admin/good',
       name: 'adminGood',
       component: () => import('../views/admin/Good.vue')
+    },
+    {
+      path: '/admin/user/edit/:id', // 新增的编辑用户信息的路由
+      name: 'editUser',
+      component: () => import('../views/admin/EditUser.vue'),
+      props: true
+    },
+    {
+      path: '/admin/good/edit/:id', // 新增的编辑美食信息的路由
+      name: 'editGood',
+      component: () => import('../views/admin/EditGood.vue'),
+      props: true
     }
   ]
 })
