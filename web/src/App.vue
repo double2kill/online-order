@@ -28,8 +28,10 @@ onMounted(async () => {
             <div class="col-xl-6 col-lg-7 col-md-7 col-12 order-2 order-md-1">
               <div class="hero-content">
                 <h1><span></span>{{ n.name }}</h1>
+                <h1><span></span>${{ n.price }}</h1>
+
                 <a :href="`showNews.do?id=${n.id}`" class="sf-button">
-                  <span>查看详情</span>
+                  <span>下单</span>
                 </a>
               </div>
             </div>

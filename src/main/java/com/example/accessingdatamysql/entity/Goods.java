@@ -15,6 +15,8 @@ public class Goods {
 
 	private String email;
 
+	private String price;
+
 	private String img;
 
 	public Integer getId() {
@@ -47,5 +49,13 @@ public class Goods {
 
 	public void setImg(String img) {
 		this.img = img;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(Integer Price) {
+		this.price = price;
 	}
 }
