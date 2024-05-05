@@ -1,0 +1,17 @@
+{
+  "name": "your-project-name",
+  "version": "1.0.0",
+  "description": "Your project description",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "jest"
+  },
+  "dependencies": {
+    "ant-design-vue": "^4.2.1"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6",
+    "vite": "^5.2.11"
+  }
+}
