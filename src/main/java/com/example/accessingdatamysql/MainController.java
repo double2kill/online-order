@@ -1,12 +1,16 @@
 package com.example.accessingdatamysql;
 
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller	// This means that this class is a Controller
@@ -47,6 +51,26 @@ public class MainController {
 	public @ResponseBody Iterable<User> getAllUsers() {
 		return userRepository.findAll();
 	}
+
+	@GetMapping(path="/users/{id}")
+	public @ResponseBody Optional<User> getUserById(@PathVariable("id") Integer id) {
+		return userRepository.findById(id);
+	}
+
+	@PutMapping("/users/{id}")
+    public @ResponseBody User editUser(
+            @PathVariable("id") Integer id, 
+            @RequestBody User newUser) {
+        
+      Optional<User> user = userRepository.findById(id);
+			if (!user.isPresent()) {
+        // 如果用户不存在，可以返回一个错误信息或者一个特定的响应体
+        return null; // 或者抛出一个异常
+			}
+			// 保存更改
+			User updatedUser = userRepository.save(newUser);
+			return updatedUser;
+    }
 
 	@GetMapping("/findUser")
 	public @ResponseBody User getUsersByName(@RequestParam String name) {
