@@ -2,6 +2,8 @@
 import { ref, onMounted, computed } from 'vue'
 import axios from 'axios'
 
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const loginUser = localStorage.getItem('loginUser')
 const search = ref('')
 const goods = ref([])
@@ -15,6 +17,12 @@ onMounted(async () => {
 })
 
 const handleOrder = async (n) => {
+  if (!localStorage.getItem('loginUser')) {
+    alert('请先登录')
+    router.push('/login')
+    return
+  }
+
   const response = await axios.post(
     `/api/orders/add?username=${loginUser}&goodName=${n.name}&price=${n.price}`
   )
@@ -23,7 +31,7 @@ const handleOrder = async (n) => {
 </script>
 
 <template>
-  <div class="hero-area slider-navigation-1" style="text-align: center;">
+  <div class="hero-area slider-navigation-1" style="text-align: center">
     <input v-model="search" type="text" placeholder="搜索商品名称" />
     <p v-if="search">搜索: {{ search }}, 共 {{ filteredGoods.length }}个结果</p>
     <!-- 在这里添加样式 -->
@@ -55,8 +63,6 @@ const handleOrder = async (n) => {
     </div>
   </div>
 </template>
-
-
 
 <style>
 /* 这里是你的样式代码 */
@@ -102,7 +108,3 @@ const handleOrder = async (n) => {
   border-radius: 10px;
 }
 </style>
-
-
-
-

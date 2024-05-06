@@ -1,23 +1,7 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterView } from 'vue-router'
 // import Footer from './components/Footer.vue'
 import Top from './components/Top.vue'
-import { useRouter } from 'vue-router'
-const router = useRouter()
-
-import { onMounted } from 'vue'
-
-onMounted(() => {
-  const loginUser = localStorage.getItem('loginUser')
-  const { name } = router.currentRoute.value
-  if (['login', 'register'].includes(name)) {
-    return
-  }
-  if (!loginUser) {
-    router.push('/login')
-  }
-})
 </script>
 
 <template>
