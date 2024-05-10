@@ -72,6 +72,7 @@ public class MainController {
 			return updatedUser;
     }
 
+
 	@GetMapping("/findUser")
 	public @ResponseBody User getUsersByName(@RequestParam String name) {
 			return userRepository.findByName(name);
@@ -116,6 +117,27 @@ public class MainController {
 	public @ResponseBody Iterable<Goods> getAllGoods() {
 		return goodsRepository.findAll();
 	}
+
+	@GetMapping(path="/goods/{id}")
+	public @ResponseBody Optional<Goods> getGoodById(@PathVariable("id") Integer id) {
+		return goodsRepository.findById(id);
+	}
+
+	@PutMapping("/goods/{id}")
+	public @ResponseBody Goods editGood(
+			@PathVariable("id") Integer id,
+			@RequestBody Goods newGood) {
+
+		Optional<Goods> good = goodsRepository.findById(id);
+		if (!good.isPresent()) {
+			// 适当的错误处理
+			return null; // 或者抛出一个异常
+		}
+		// 保存更改
+		Goods updatedGood = goodsRepository.save(newGood);
+		return updatedGood;
+	}
+
 
 	@GetMapping(path="/goods/byHot")
 	public @ResponseBody List<Goods> getHotGoods() {
